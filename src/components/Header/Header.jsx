@@ -32,7 +32,7 @@ const Header = () => {
           </label>
           <ul
             tabIndex={0}
-            className="menu text-blue-600-500 text-xl  menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
+            className="menu  text-xl  menu-sm dropdown-content mt-3 z-[1] p-2 shadow bg-base-100 rounded-box w-52"
           >
            {links}
           </ul>
@@ -40,7 +40,7 @@ const Header = () => {
         <a className="btn btn-ghost normal-case text-2xl font-bold  ">Career Hub</a>
       </div>
       <div className="navbar-center hidden lg:flex">
-        <ul className="menu text-blue-500 text-xl  menu-horizontal px-1">
+        <ul className="menu  text-xl  menu-horizontal px-1">
          {links}
         </ul>
       </div>
