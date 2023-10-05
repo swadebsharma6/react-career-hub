@@ -1,9 +1,12 @@
 import { useContext } from "react";
+import { useNavigate } from "react-router-dom";
 import { AuthContext } from "../../Firebase/AuthProvider";
 
 
 const Login = () => {
-    const {signInUser} = useContext(AuthContext)
+    const {signInUser} = useContext(AuthContext);
+
+    const navigate = useNavigate();
 
     const handleSubmit =(event) =>{
         event.preventDefault();
@@ -16,7 +19,8 @@ const Login = () => {
         .then(res =>{
             const user = res.user;
             console.log('logged user', user);
-            alert('User logged successfully')
+            alert('User logged successfully');
+            navigate('/');
         })
         .catch(error =>{
             console.log(error.message)

@@ -8,6 +8,7 @@ import {
   createBrowserRouter
 } from "react-router-dom";
 import AuthProvider from './Firebase/AuthProvider';
+import PrivetRoute from './Firebase/PrivetRoute/PrivetRoute';
 import Login from './Pages/Login/Login';
 import Register from './Pages/Register/Register';
 import AppliedJobs from './components/AppliedJobs/AppliedJobs';
@@ -31,12 +32,12 @@ const router = createBrowserRouter([
       },
       {
         path: '/applied',
-        element: <AppliedJobs></AppliedJobs>,
+        element: <PrivetRoute> <AppliedJobs></AppliedJobs></PrivetRoute>,
         loader: () => fetch('../public/jobs.json')
       },
       {
         path: '/job/:id',
-        element: <JobDetails></JobDetails>,
+        element: <PrivetRoute> <JobDetails></JobDetails></PrivetRoute>,
         loader: () => fetch('../public/jobs.json')
       },
       {
