@@ -1,3 +1,4 @@
+import { Helmet } from "react-helmet-async";
 import { useLoaderData, useParams } from "react-router-dom";
 import { ToastContainer, toast } from "react-toastify";
 import 'react-toastify/dist/ReactToastify.css';
@@ -21,6 +22,10 @@ const JobDetails = () => {
 
     return (
         <div className="my-10">
+        <Helmet>
+           <title>Career Hub | Job Details</title>
+            
+        </Helmet>
              <div className="text-center">
              <h4 className="text-2xl font-bold ">Job Details of: </h4>
              </div>
