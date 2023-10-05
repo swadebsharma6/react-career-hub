@@ -1,13 +1,26 @@
+import { useContext } from "react";
+import { AuthContext } from "../../Firebase/AuthProvider";
 
 
 const Login = () => {
+    const {signInUser} = useContext(AuthContext)
 
     const handleSubmit =(event) =>{
         event.preventDefault();
         const form = event.target;
         const email = form.email.value ;
         const password = form.password.value;
-        console.log(email, password)
+        console.log(email, password);
+        // signIn user
+        signInUser(email, password)
+        .then(res =>{
+            const user = res.user;
+            console.log('logged user', user);
+            alert('User logged successfully')
+        })
+        .catch(error =>{
+            console.log(error.message)
+        })
     }
 
 

@@ -7,12 +7,14 @@ import {
   RouterProvider,
   createBrowserRouter
 } from "react-router-dom";
+import AuthProvider from './Firebase/AuthProvider';
 import Login from './Pages/Login/Login';
 import Register from './Pages/Register/Register';
 import AppliedJobs from './components/AppliedJobs/AppliedJobs';
 import ErrorPage from './components/ErrorPage/ErrorPage';
 import JobDetails from './components/FeaturedJobs/JobDetails';
 import Home from './components/Home/Home';
+import Jobs from './components/Jobs/Jobs';
 import Root from './components/Root/Root';
 import Statistics from './components/Statistics/Statistics';
 
@@ -38,6 +40,10 @@ const router = createBrowserRouter([
         loader: () => fetch('../public/jobs.json')
       },
       {
+        path: '/jobs',
+        element: <Jobs></Jobs>
+      },
+      {
         path: '/statistic',
         element: <Statistics></Statistics>
       },
@@ -55,10 +61,12 @@ const router = createBrowserRouter([
 
 ReactDOM.createRoot(document.getElementById('root')).render(
   <React.StrictMode>
+  <AuthProvider>
   <HelmetProvider>
   <div className='max-w-screen-xl mx-auto'>
   <RouterProvider router={router} />
   </div>
   </HelmetProvider>
+  </AuthProvider>
   </React.StrictMode>,
 )

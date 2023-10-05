@@ -1,13 +1,27 @@
+import { useContext } from "react";
+import { AuthContext } from "../../Firebase/AuthProvider";
 
 
 const Register = () => {
+
+    const {createUser} = useContext(AuthContext);
 
     const handleSubmit =(event) =>{
         event.preventDefault();
         const form = event.target;
         const email = form.email.value ;
         const password = form.password.value;
-        console.log(email, password)
+        console.log(email, password);
+        // create user
+        createUser(email, password)
+        .then(res =>{
+            const user = res.user;
+            console.log('created user', user);
+            alert('User created successfully')
+        })
+        .catch(error =>{
+            console.log(error.message)
+        })
     }
 
     return (
@@ -15,7 +29,7 @@ const Register = () => {
         <div className="hero min-h-[80vh] bg-base-200 my-10 rounded">
         <div className="hero-content flex-col ">
           <div className="text-center lg:text-left">
-            <h1 className="text-3xl text-purple-600 font-bold">Please Login now!</h1>
+            <h1 className="text-3xl text-purple-600 font-bold">Please Register now!</h1>
            
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
